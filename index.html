@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Скопіювати текст</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Натисніть кнопку, щоб скопіювати текст</h2>
+    <button onclick="copyText()">Скопіювати</button>
+    <p id="message" style="color: green; display: none;">Текст скопійовано!</p>
+    
+    <script>
+        function copyText() {
+            const text = "Тут ваш текст, який буде скопійовано";
+            navigator.clipboard.writeText(text).then(() => {
+                document.getElementById('message').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('message').style.display = 'none';
+                }, 2000);
+            }).catch(err => {
+                alert("Не вдалося скопіювати текст");
+            });
+        }
+    </script>
+</body>
+</html>
